@@ -1,0 +1,149 @@
+<testsuites id="" name="" tests="5" failures="5" skipped="0" errors="0" time="6.827345">
+<testsuite name="employee-assignment-ui.test.ts" timestamp="2025-08-16T23:44:06.263Z" hostname="chromium" tests="5" failures="5" skipped="0" time="0.032" errors="0">
+<testcase name="Employee Assignment UI Tests › Admin can assign employees through UI when creating project" classname="employee-assignment-ui.test.ts" time="0.004">
+<failure message="employee-assignment-ui.test.ts:24:3 Admin can assign employees through UI when creating project" type="FAILURE">
+<![CDATA[  [chromium] › employee-assignment-ui.test.ts:24:3 › Employee Assignment UI Tests › Admin can assign employees through UI when creating project 
+
+    Error: browserType.launch: Executable doesn't exist at /home/runner/workspace/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../test-results/employee-assignment-ui-Emp-8a811-gh-UI-when-creating-project-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../test-results/employee-assignment-ui-Emp-8a811-gh-UI-when-creating-project-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/employee-assignment-ui-Emp-8a811-gh-UI-when-creating-project-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Employee Assignment UI Tests › Project Manager can assign employees through UI when creating project" classname="employee-assignment-ui.test.ts" time="0.005">
+<failure message="employee-assignment-ui.test.ts:70:3 Project Manager can assign employees through UI when creating project" type="FAILURE">
+<![CDATA[  [chromium] › employee-assignment-ui.test.ts:70:3 › Employee Assignment UI Tests › Project Manager can assign employees through UI when creating project 
+
+    Error: browserType.launch: Executable doesn't exist at /home/runner/workspace/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../test-results/employee-assignment-ui-Emp-b8600-gh-UI-when-creating-project-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../test-results/employee-assignment-ui-Emp-b8600-gh-UI-when-creating-project-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/employee-assignment-ui-Emp-b8600-gh-UI-when-creating-project-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Employee Assignment UI Tests › Admin can edit existing project and modify employee assignments" classname="employee-assignment-ui.test.ts" time="0.007">
+<failure message="employee-assignment-ui.test.ts:117:3 Admin can edit existing project and modify employee assignments" type="FAILURE">
+<![CDATA[  [chromium] › employee-assignment-ui.test.ts:117:3 › Employee Assignment UI Tests › Admin can edit existing project and modify employee assignments 
+
+    Error: browserType.launch: Executable doesn't exist at /home/runner/workspace/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../test-results/employee-assignment-ui-Emp-41fa3-modify-employee-assignments-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../test-results/employee-assignment-ui-Emp-41fa3-modify-employee-assignments-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/employee-assignment-ui-Emp-41fa3-modify-employee-assignments-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Employee Assignment UI Tests › Manager role cannot see New Project button or employee assignment" classname="employee-assignment-ui.test.ts" time="0.007">
+<failure message="employee-assignment-ui.test.ts:155:3 Manager role cannot see New Project button or employee assignment" type="FAILURE">
+<![CDATA[  [chromium] › employee-assignment-ui.test.ts:155:3 › Employee Assignment UI Tests › Manager role cannot see New Project button or employee assignment 
+
+    Error: browserType.launch: Executable doesn't exist at /home/runner/workspace/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../test-results/employee-assignment-ui-Emp-f11f9-tton-or-employee-assignment-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../test-results/employee-assignment-ui-Emp-f11f9-tton-or-employee-assignment-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/employee-assignment-ui-Emp-f11f9-tton-or-employee-assignment-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Employee Assignment UI Tests › Employee role has restricted access to employee assignment features" classname="employee-assignment-ui.test.ts" time="0.009">
+<failure message="employee-assignment-ui.test.ts:175:3 Employee role has restricted access to employee assignment features" type="FAILURE">
+<![CDATA[  [chromium] › employee-assignment-ui.test.ts:175:3 › Employee Assignment UI Tests › Employee role has restricted access to employee assignment features 
+
+    Error: browserType.launch: Executable doesn't exist at /home/runner/workspace/.cache/ms-playwright/chromium_headless_shell-1181/chrome-linux/headless_shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../test-results/employee-assignment-ui-Emp-c1d03-mployee-assignment-features-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../test-results/employee-assignment-ui-Emp-c1d03-mployee-assignment-features-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/employee-assignment-ui-Emp-c1d03-mployee-assignment-features-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
