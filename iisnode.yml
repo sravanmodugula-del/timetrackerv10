@@ -1,0 +1,47 @@
+
+# IISNode Configuration for TimeTracker
+# This file configures how IISNode runs the Node.js application
+
+# Node.js environment
+node_env: production
+
+# Logging configuration
+loggingEnabled: true
+logDirectory: C:\TimeTracker\Logs
+logFileNamePrefix: iisnode
+
+# Process management
+nodeProcessCountPerApplication: 2
+maxConcurrentRequestsPerProcess: 1024
+maxNamedPipeConnectionRetry: 100
+namedPipeConnectionRetryDelay: 250
+
+# Performance settings
+asyncCompletionThreadCount: 8
+initialRequestBufferSize: 4096
+maxRequestBufferSize: 65536
+
+# File watching for auto-restart
+watchedFiles: web.config;*.js;dist\*.js;package.json
+
+# Debugging (disabled in production)
+debuggingEnabled: false
+debugHeaderEnabled: false
+debuggerPortRange: 5058-6058
+
+# Shutdown configuration
+gracefulShutdownTimeout: 60000
+
+# Request forwarding
+enableXFF: true
+promoteServerVars: LOGON_USER,AUTH_USER,AUTH_TYPE
+
+# Error handling
+flushResponse: false
+devErrorsEnabled: false
+
+# Node.js command line arguments
+nodeProcessCommandLine: node.exe
+
+# Environment variables
+appSettingKeys: NODE_ENV,DATABASE_URL,SESSION_SECRET
