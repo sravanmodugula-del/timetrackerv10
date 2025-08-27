@@ -84,49 +84,116 @@ export async function setupAuth(app: Express) {
 
   // SAML Login route
   app.get("/api/login", (req, res, next) => {
-    console.log("🔐 Login attempt - redirecting to SAML");
+    console.log("🔐 ===== SAML LOGIN INITIATION =====");
+    console.log("🔐 Request URL:", req.url);
+    console.log("🔐 Request headers:", JSON.stringify(req.headers, null, 2));
+    console.log("🔐 Session ID:", req.sessionID);
+    console.log("🔐 SAML_ENABLED:", process.env.SAML_ENABLED);
+    
     if (process.env.SAML_ENABLED === 'true') {
+      console.log("🔐 Initiating SAML authentication...");
       passport.authenticate('saml', {
         successRedirect: '/',
         failureRedirect: '/login?error=saml_failed'
       })(req, res, next);
     } else {
+      console.error("❌ SAML not enabled");
       res.status(503).json({ message: "Authentication not configured" });
     }
   });
 
-  // SAML Callback route
+  // SAML Callback route (ACS)
   app.post("/api/callback", (req, res, next) => {
-    console.log("🔗 SAML callback received");
+    console.log("🔗 ===== SAML CALLBACK (ACS) RECEIVED =====");
+    console.log("🔗 Request method:", req.method);
+    console.log("🔗 Request URL:", req.url);
+    console.log("🔗 Request headers:", JSON.stringify(req.headers, null, 2));
+    console.log("🔗 Request body keys:", Object.keys(req.body || {}));
+    console.log("🔗 Session ID:", req.sessionID);
+    
+    // Log SAML Response if present
+    if (req.body && req.body.SAMLResponse) {
+      console.log("🔗 SAMLResponse received (base64):", req.body.SAMLResponse.substring(0, 100) + '...');
+      try {
+        const decoded = Buffer.from(req.body.SAMLResponse, 'base64').toString('utf8');
+        console.log("🔗 SAMLResponse decoded (first 500 chars):", decoded.substring(0, 500) + '...');
+      } catch (e) {
+        console.error("❌ Failed to decode SAMLResponse:", e.message);
+      }
+    }
+    
+    if (req.body && req.body.RelayState) {
+      console.log("🔗 RelayState:", req.body.RelayState);
+    }
+    
     passport.authenticate('saml', (err: any, user: any, info: any) => {
+      console.log("🔗 SAML authenticate callback executed");
+      console.log("🔗 Error:", err);
+      console.log("🔗 User:", user ? 'User object received' : 'No user');
+      console.log("🔗 Info:", info);
+      
       if (err) {
-        console.error("❌ SAML callback error:", err);
-        return res.redirect("/login?error=saml_error");
+        console.error("❌ ===== SAML CALLBACK ERROR =====");
+        console.error("❌ Error type:", err.constructor.name);
+        console.error("❌ Error message:", err.message);
+        console.error("❌ Error stack:", err.stack);
+        console.error("❌ Error details:", JSON.stringify(err, null, 2));
+        console.error("❌ ===== END SAML ERROR =====");
+        return res.redirect("/login?error=saml_error&details=" + encodeURIComponent(err.message));
       }
 
       if (!user) {
-        console.error("❌ SAML callback failed - no user:", info);
-        return res.redirect("/login?error=saml_failed");
+        console.error("❌ SAML callback failed - no user");
+        console.error("❌ Info object:", JSON.stringify(info, null, 2));
+        return res.redirect("/login?error=saml_failed&info=" + encodeURIComponent(JSON.stringify(info)));
       }
 
+      console.log("🔗 Attempting to log in user...");
       req.logIn(user, (loginErr) => {
         if (loginErr) {
           console.error("❌ Login error:", loginErr);
-          return res.redirect("/login?error=login_failed");
+          console.error("❌ Login error stack:", loginErr.stack);
+          return res.redirect("/login?error=login_failed&details=" + encodeURIComponent(loginErr.message));
         }
 
         console.log("✅ SAML callback successful, redirecting to /");
+        console.log("✅ Session after login:", req.session);
+        console.log("✅ User in session:", req.user);
         return res.redirect("/");
       });
     })(req, res, next);
   });
 
+  // SAML Debug endpoint
+  app.get("/api/saml/debug", (req, res) => {
+    const debugInfo = {
+      samlEnabled: process.env.SAML_ENABLED,
+      entryPoint: process.env.SAML_ENTRY_POINT,
+      hasCert: !!process.env.SAML_CERT,
+      certLength: process.env.SAML_CERT ? process.env.SAML_CERT.length : 0,
+      nodeEnv: process.env.NODE_ENV,
+      timestamp: new Date().toISOString(),
+      serverUrl: req.protocol + '://' + req.get('host'),
+      requestHeaders: req.headers,
+      session: req.session ? 'Session exists' : 'No session'
+    };
+    
+    console.log("🔍 SAML Debug info requested:", debugInfo);
+    res.json(debugInfo);
+  });
+
   // SAML Metadata endpoint
   app.get("/api/saml/metadata", (req, res) => {
+    console.log("📋 SAML Metadata requested");
+    console.log("📋 Request headers:", req.headers);
+    
     if (process.env.SAML_ENABLED === 'true') {
+      const metadata = generateSamlMetadata();
+      console.log("📋 Generated metadata:", metadata);
       res.type('application/xml');
-      res.send(generateSamlMetadata());
+      res.send(metadata);
     } else {
+      console.log("❌ SAML not enabled for metadata request");
       res.status(404).json({ message: "SAML not enabled" });
     }
   });
